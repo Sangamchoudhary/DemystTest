@@ -42,7 +42,8 @@ exports.createLoan = async (req, res, next) => {
       pnlPerYear,
       preAssesment
     );
-    res.status(201);
+    if (decision === "true") res.status(201);
+    else res.status(200);
     res.json({ loanApproved: decision });
   } catch (error) {
     next(error);
