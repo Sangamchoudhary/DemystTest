@@ -61,7 +61,6 @@ exports.createLoan = async (req, res, next) => {
 
 // This is business logic so I'm keeping it here and not in utils
 function findLoanPreAssementScore(pnl12m, avgAssetValue12m, loanAmount) {
-  console.log(loanAmount);
   if (avgAssetValue12m > loanAmount) {
     return 100;
   } else if (pnl12m > 0) {
