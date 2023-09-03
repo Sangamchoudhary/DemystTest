@@ -9,8 +9,8 @@ The project is divided into 2 projects for FE and BE respectively. They both hav
 3. HTML/CSS
 
 ## Prerequisites for running the app locally -
-1. Node.js (Tested with latest v19.8.1)
-2. NPM (Tested with v9.5.1)
+1. Node.js
+2. NPM 
 3. Vue.js
 
 ## Judging Criterias Implemented -
