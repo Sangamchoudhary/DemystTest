@@ -25,7 +25,12 @@ exports.getBalanceSheet = async (req, res, next) => {
 
 exports.createLoan = async (req, res, next) => {
   try {
-    const { businessName, businessEstablishmentYear, balanceSheet } = req.body;
+    const {
+      businessName,
+      businessEstablishmentYear,
+      balanceSheet,
+      loanAmount,
+    } = req.body;
 
     if (balanceSheet !== undefined && balanceSheet.length === 0) {
       return res.status(400).json({ error: "Balance sheet is empty!" });
@@ -34,7 +39,11 @@ exports.createLoan = async (req, res, next) => {
     const pnl12m = pnlCalculator.calculatePnl12m(balanceSheet);
     const avgAssetValue12m =
       assetValueCalculator.calculateAvgAssetValue12m(balanceSheet);
-    const preAssesment = findLoanPreAssementScore(pnl12m, avgAssetValue12m);
+    const preAssesment = findLoanPreAssementScore(
+      pnl12m,
+      avgAssetValue12m,
+      loanAmount
+    );
     const pnlPerYear = pnlCalculator.calculatePnlByYear(balanceSheet);
     const decision = await decisionService.isLoanFeasible(
       businessName,
@@ -52,6 +61,7 @@ exports.createLoan = async (req, res, next) => {
 
 // This is business logic so I'm keeping it here and not in utils
 function findLoanPreAssementScore(pnl12m, avgAssetValue12m, loanAmount) {
+  console.log(loanAmount);
   if (avgAssetValue12m > loanAmount) {
     return 100;
   } else if (pnl12m > 0) {
