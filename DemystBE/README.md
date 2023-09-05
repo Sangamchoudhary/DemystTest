@@ -6,10 +6,6 @@ In the project directory, you can run:
 1. `npm install`
 2. `npm start`
 
-## Run the app (With docker) 
-1. `docker build -t demyst-backend .`
-2. `docker run -p 5000:5000 -d demyst-backend`
-
 The server is started at [http://localhost:5000](http://localhost:5000)
 
 ## APIs
