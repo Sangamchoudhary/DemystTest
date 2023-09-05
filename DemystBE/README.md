@@ -1,6 +1,6 @@
 # Demyst Loan App BE
 
-## Run the app (Without docker)
+## Run the app
 
 In the project directory, you can run:
 1. `npm install`
